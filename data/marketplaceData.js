@@ -1,0 +1,42 @@
+export const marketplaces = {
+  StockX: {
+    lowestAsk: 299,
+    highestBid: 199,
+    fees: 12,
+    payout: 263.12,
+    icon: "https://web-assets.stockx.com/static/logo/favicon.ico",
+    url: "https://stockx.com/",
+  },
+  Goat: {
+    lowestAsk: 309,
+    highestBid: 209,
+    fees: 12.4,
+    payout: 270.68,
+    icon: "https://www.goat.com/favicon.ico",
+    url: "https://goat.com/",
+  },
+  SNKRDUNK: {
+    lowestAsk: 289,
+    highestBid: 189,
+    fees: 0,
+    payout: 289,
+    icon: "https://en-assets.snkrdunk.com/e78884508de531e/img/common/app-logo.png",
+    url: "https://snkrdunk.com/en/",
+  },
+  "Stadium Goods": {
+    lowestAsk: 349,
+    highestBid: 249,
+    fees: 21,
+    payout: 275.71,
+    icon: "https://www.stadiumgoods.com/static/stadiumgoods/build/favicon/favicon-32x32.01582aa11a52081b6c14.png",
+    url: "https://www.stadiumgoods.com/",
+  },
+  "Flight Club": {
+    lowestAsk: 329,
+    highestBid: 229,
+    fees: 12.4,
+    payout: 288.21,
+    icon: "https://www.flightclub.com/static/favicon.ico",
+    url: "https://www.flightclub.com/",
+  },
+};
