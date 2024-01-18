@@ -1,7 +1,7 @@
 export const products = {
   "Monday, 1 January 2024": [
     {
-      image: "https://secure-images.nike.com/is/image/DotCom/DZ2708_102",
+      imageUrl: "https://secure-images.nike.com/is/image/DotCom/DZ2708_102",
       name: "Nike Air Force 1 '07 LX",
       isNotable: false,
       brand: "NIKE",
@@ -11,7 +11,7 @@ export const products = {
       time: "09:43:49 PM",
     },
     {
-      image: "https://secure-images.nike.com/is/image/DotCom/FB7720_002",
+      imageUrl: "https://secure-images.nike.com/is/image/DotCom/FB7720_002",
       name: "Nike Dunk Low LX NBHD",
       isNotable: true,
       brand: "NIKE",
@@ -21,7 +21,7 @@ export const products = {
       time: "09:43:49 PM",
     },
     {
-      image: "https://secure-images.nike.com/is/image/DotCom/FQ8108_110",
+      imageUrl: "https://secure-images.nike.com/is/image/DotCom/FQ8108_110",
       name: "Nike Cortez",
       isNotable: false,
       brand: "NIKE",
@@ -31,7 +31,7 @@ export const products = {
       time: "09:43:29 PM",
     },
     {
-      image: "https://secure-images.nike.com/is/image/DotCom/FN4442_001",
+      imageUrl: "https://secure-images.nike.com/is/image/DotCom/FN4442_001",
       name: "Nike Terminator High",
       isNotable: false,
       brand: "NIKE",
@@ -41,7 +41,7 @@ export const products = {
       time: "09:43:25 PM",
     },
     {
-      image: "https://secure-images.nike.com/is/image/DotCom/DM0211_101",
+      imageUrl: "https://secure-images.nike.com/is/image/DotCom/DM0211_101",
       name: "Nike Air Force 1 '07 Fresh",
       isNotable: false,
       brand: "NIKE",
@@ -51,7 +51,7 @@ export const products = {
       time: "09:40:49 PM",
     },
     {
-      image: "https://secure-images.nike.com/is/image/DotCom/DQ3989_101",
+      imageUrl: "https://secure-images.nike.com/is/image/DotCom/DQ3989_101",
       name: "Nike Air Max 1 '86 Premium",
       isNotable: false,
       brand: "NIKE",
@@ -61,7 +61,7 @@ export const products = {
       time: "09:39:35 PM",
     },
     {
-      image: "https://secure-images.nike.com/is/image/DotCom/DH7546_003",
+      imageUrl: "https://secure-images.nike.com/is/image/DotCom/DH7546_003",
       name: "ISPA Mindbody",
       isNotable: false,
       brand: "NIKELAB",
@@ -71,7 +71,7 @@ export const products = {
       time: "09:38:52 PM",
     },
     {
-      image: "https://secure-images.nike.com/is/image/DotCom/FQ8148_010",
+      imageUrl: "https://secure-images.nike.com/is/image/DotCom/FQ8148_010",
       name: "Nike Dunk Low Premium",
       isNotable: true,
       brand: "NIKE",
@@ -81,7 +81,7 @@ export const products = {
       time: "09:38:09 PM",
     },
     {
-      image: "https://secure-images.nike.com/is/image/DotCom/414571_171",
+      imageUrl: "https://secure-images.nike.com/is/image/DotCom/414571_171",
       name: "Air Jordan 13 'Wheat'",
       isNotable: false,
       brand: "JORDAN",
@@ -91,7 +91,7 @@ export const products = {
       time: "09:35:14 PM",
     },
     {
-      image: "https://secure-images.nike.com/is/image/DotCom/DZ4549_001",
+      imageUrl: "https://secure-images.nike.com/is/image/DotCom/DZ4549_001",
       name: "Nike Air Max 1 SC",
       isNotable: false,
       brand: "NIKE",
@@ -101,7 +101,7 @@ export const products = {
       time: "09:32:06 PM",
     },
     {
-      image: "https://secure-images.nike.com/is/image/DotCom/DR8884_101",
+      imageUrl: "https://secure-images.nike.com/is/image/DotCom/DR8884_101",
       name: "Air Jordan 2 'Origins'",
       isNotable: false,
       brand: "JORDAN",
@@ -111,7 +111,7 @@ export const products = {
       time: "09:26:59 PM",
     },
     {
-      image: "https://secure-images.nike.com/is/image/DotCom/CZ0775_046",
+      imageUrl: "https://secure-images.nike.com/is/image/DotCom/CZ0775_046",
       name: "Air Jordan 1 Low OG",
       isNotable: true,
       brand: "JORDAN",
@@ -121,7 +121,7 @@ export const products = {
       time: "09:26:26 PM",
     },
     {
-      image: "https://secure-images.nike.com/is/image/DotCom/DZ2786_400",
+      imageUrl: "https://secure-images.nike.com/is/image/DotCom/DZ2786_400",
       name: "Nike Air Force 1 '07 Premium",
       isNotable: false,
       brand: "NIKE",

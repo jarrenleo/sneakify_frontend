@@ -1,5 +1,5 @@
 import NavigationBar from "./features/navigation/NavigationBar";
-import Releases from "./features/release/Releases";
+import Releases from "./features/releases/Releases";
 import LiveMonitor from "./features/monitor/LiveMonitor";
 import MainContent from "./features/content/MainContent";
 import { useEffect, useState } from "react";
@@ -19,8 +19,6 @@ export default function App() {
       window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
-
-  console.log(viewportWidth);
 
   return (
     <div>
