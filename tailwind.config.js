@@ -1,4 +1,5 @@
-module.exports = {
+/** @type {import('tailwindcss').Config} */
+export default {
   content: ["./components/**/*.{js,jsx}", "./src/**/*.{js,jsx}"],
   theme: {
     fontFamily: {

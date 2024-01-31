@@ -13,7 +13,7 @@ export default function LiveMonitor() {
         <SectionHeader>Live Monitor</SectionHeader>
         <LiveStatus isLive={isLive} />
       </div>
-      <Products section="monitor" products={products} setIsLive={setIsLive} />
+      {/* <Products section="monitor" products={products} setIsLive={setIsLive} /> */}
     </section>
   );
 }

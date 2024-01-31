@@ -1,4 +1,4 @@
-import NotableBadge from "@/ui/NotableBadge";
+import PopularBadge from "@/ui/PopularBadge";
 import { Badge } from "lucide-react";
 
 export default function ProductInfo({ product }) {
@@ -25,7 +25,7 @@ export default function ProductInfo({ product }) {
         <div className="flex flex-col space-y-2 p-6">
           <div className="flex items-center gap-2">
             <h3 className="text-2xl font-semibold leading-none">{name}</h3>
-            {isNotable && <NotableBadge size={32} />}
+            {isNotable && <PopularBadge size={32} />}
           </div>
 
           <p className="text-sm text-muted-foreground">{colour}</p>
