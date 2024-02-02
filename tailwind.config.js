@@ -1,14 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./components/**/*.{js,jsx}", "./src/**/*.{js,jsx}"],
+  content: ["./src/**/*.{js,jsx}"],
   theme: {
-    fontFamily: {
-      sans: "Inter, sans-serif",
-    },
     extend: {
-      height: {
-        screen: "100dvh",
-      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -32,5 +26,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwind-scrollbar")],
+  plugins: [require("tailwind-scrollbar"), require("tailwindcss-animate")],
 };
