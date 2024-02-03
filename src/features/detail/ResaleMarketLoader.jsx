@@ -1,13 +1,13 @@
 const numOfRows = new Array(3).fill(null);
 
-export default function MarketplaceSkeleton() {
+export default function ResaleMarketLoader() {
   return (
     <>
       <div className="mb-6 flex items-center justify-between">
         <h3 className="text-xl font-semibold text-foreground">
-          Marketplace Comparison
+          Resale Market Prices
         </h3>
-        <div className="h-10 w-24 animate-pulse rounded-md bg-muted"></div>
+        <div className="h-8 w-20 animate-pulse rounded-md bg-muted"></div>
       </div>
       <div className="rounded-md border border-border">
         <table className="w-full divide-y divide-border">
@@ -21,22 +21,22 @@ export default function MarketplaceSkeleton() {
             </tr>
           </thead>
           <tbody className="animate-pulse divide-y divide-border text-sm">
-            {numOfRows.map((row, i) => (
+            {numOfRows.map((_, i) => (
               <tr key={i}>
                 <td className="px-6 py-4">
-                  <div className="h-5 w-16 rounded-full bg-muted"></div>
+                  <div className="h-4 w-20 rounded-md bg-muted"></div>
                 </td>
                 <td className="px-6">
-                  <div className="h-5 w-10 rounded-full bg-muted"></div>
+                  <div className="h-4 w-12 rounded-md bg-muted"></div>
                 </td>
                 <td className="px-6">
-                  <div className="h-5 w-10 rounded-full bg-muted"></div>
+                  <div className="h-4 w-12 rounded-md bg-muted"></div>
                 </td>
                 <td className="px-6">
-                  <div className="h-5 w-10 rounded-full bg-muted"></div>
+                  <div className="h-4 w-8 rounded-md bg-muted"></div>
                 </td>
                 <td className="px-6">
-                  <div className="h-5 w-10 rounded-full bg-muted"></div>
+                  <div className="h-4 w-12 rounded-md bg-muted"></div>
                 </td>
               </tr>
             ))}

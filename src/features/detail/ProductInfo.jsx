@@ -1,41 +1,45 @@
 import { useEffect } from "react";
+import { useGlobalState } from "@/context/globalContext";
 import { useQuery } from "@tanstack/react-query";
-import ProductInfoSkeleton from "./ProductInfoSkeleton";
+import ProductInfoLoader from "./ProductInfoLoader";
 
-export default function ProductInfo({
-  channel,
-  sku,
-  country,
-  timeZone,
-  setSizes,
-}) {
-  const isReadyToFetch = channel && sku ? true : false;
+async function getProductInfo(channel, sku, country, timeZone) {
+  const response = await fetch(
+    `http://localhost:8888/product?channel=${channel}&sku=${sku}&country=${country}&timeZone=${timeZone}`,
+  );
+  if (!response.ok) throw new Error("Something went wrong ☹");
+
+  return await response.json();
+}
+
+export default function ProductInfo({ setSizes, setQuery }) {
+  const { country, channel, sku, timeZone } = useGlobalState();
   const { status, data, error } = useQuery({
     queryKey: ["productInfo", channel, sku, country, timeZone],
-    queryFn: async function () {
-      const response = await fetch(
-        `http://localhost:8888/product?channel=${channel}&sku=${sku}&country=${country}&timeZone=${timeZone}`,
-      );
-      if (!response.ok) throw Error("Failed to fetch releases ☹");
-
-      return await response.json();
-    },
-    enabled: isReadyToFetch,
+    queryFn: () => getProductInfo(channel, sku, country, timeZone),
+    enabled: channel && sku ? true : false,
   });
 
   useEffect(
     function () {
-      if (status === "success")
-        setSizes(
-          data.sizesAndStockLevels.map(
-            (sizeAndStockLevel) => sizeAndStockLevel.size,
-          ),
-        );
+      if (status !== "success") return;
+
+      setSizes(
+        data.sizesAndStockLevels.map(
+          (sizeAndStockLevel) => sizeAndStockLevel.size,
+        ),
+      );
+
+      setQuery(
+        channel === "SNKRS Web"
+          ? data.name
+          : data.name + data.colour.split("/")[0],
+      );
     },
-    [status, data, setSizes],
+    [channel, status, data, setSizes, setQuery],
   );
 
-  if (status === "pending") return <ProductInfoSkeleton />;
+  if (status === "pending") return <ProductInfoLoader />;
   if (status === "error")
     return (
       <div className="my-auto text-center font-semibold">{error.message}</div>

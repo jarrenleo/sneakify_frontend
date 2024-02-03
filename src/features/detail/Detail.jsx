@@ -1,26 +1,23 @@
-import ProductInfo from "./ProductInfo";
-import Marketplace from "./Marketplace";
-import ProductReview from "./ProductReview";
 import { useState } from "react";
+import ProductInfo from "./ProductInfo";
+import ResaleMarket from "./ResaleMarket";
+import ProductReview from "./ProductReview";
 
-export default function MainContent({ channel, sku, country, timeZone }) {
+export default function Detail() {
   const [sizes, setSizes] = useState([]);
+  const [query, setQuery] = useState("");
 
   return (
     <section className="scrollbar-primary space-y-6 overflow-y-auto px-32 py-8">
       <div className="rounded-md border border-border px-8 py-6 text-card-foreground">
-        <ProductInfo
-          channel={channel}
-          sku={sku}
-          country={country}
-          timeZone={timeZone}
-          setSizes={setSizes}
-        />
+        <ProductInfo setSizes={setSizes} setQuery={setQuery} />
       </div>
       <div className="rounded-md border border-border p-8">
-        <Marketplace sku={sku} sizes={sizes} country={country} />
+        <ResaleMarket sizes={sizes} />
       </div>
-      <ProductReview />
+      <div className="col-span-2 rounded-md border border-border p-8">
+        <ProductReview query={query} />
+      </div>
     </section>
   );
 }

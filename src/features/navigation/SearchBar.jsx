@@ -39,7 +39,7 @@ export default function SearchBar() {
           onChange={(e) => setInput(e.target.value)}
           onFocus={() => setIsFocus(true)}
           onBlur={() => setIsFocus(false)}
-          className="rounded-medium placeholder:text-muted-foreground w-96 bg-input focus:outline-none"
+          className="rounded-medium w-96 bg-input placeholder:text-muted-foreground focus:outline-none"
         />
         {!input ? (
           <SquareSlash className="stroke-muted-foreground" />

@@ -1,10 +1,10 @@
-export default function PopularToggle({ isPopular, setIsPopular }) {
+export default function PopularToggle({ popularToggle, setPopularToggle }) {
   return (
     <button
       className={`rounded-md border border-border px-2 py-1 text-xs outline-none focus-visible:ring focus-visible:ring-ring ${
-        isPopular && "border-primary text-primary"
+        popularToggle && "border-primary text-primary"
       }`}
-      onClick={() => setIsPopular(!isPopular)}
+      onClick={() => setPopularToggle(!popularToggle)}
     >
       Popular
     </button>

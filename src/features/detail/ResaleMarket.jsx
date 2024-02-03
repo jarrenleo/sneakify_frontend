@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useGlobalState } from "@/context/globalContext";
 import { useQuery } from "@tanstack/react-query";
 import {
   Select,
@@ -7,38 +8,49 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/ui/Select";
-import MarketplaceSkeleton from "./MarketplaceSkeleton";
-import MarketplaceItem from "./MarketplaceItem";
+import ResaleMarketLoader from "./ResaleMarketLoader";
+import ResaleMarketItem from "./ResaleMarketItem";
 
-export default function MarketplaceComparison({ sku, sizes, country }) {
+async function getResaleMarketPrices(sku, selectedSize, country) {
+  const response = await fetch(
+    `http://localhost:8888/marketplace?sku=${sku}&size=${selectedSize}&country=${country}`,
+  );
+  if (!response.ok) throw new Error("Something went wrong ☹");
+
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+
+  return await response.json();
+}
+
+// Issues:
+// No support for sizes like 5Y or 5C, have to solve on server side
+// No exception handling for products with no available sizes
+
+export default function ResaleMarket({ sizes }) {
+  const { country, sku } = useGlobalState();
   const [selectedSize, setSelectedSize] = useState(sizes[0]);
-
-  const isReadyToFetch = sku ? true : false;
   const { status, data, error } = useQuery({
-    queryKey: ["marketplaceComparison", sku, selectedSize, country],
-    queryFn: async function () {
-      const response = await fetch(
-        `http://localhost:8888/marketplace?sku=${sku}&size=${selectedSize}&country=${country}`,
-      );
-      if (!response.ok)
-        throw Error("Failed to fetch marketplace comparisons ☹");
-
-      return await response.json();
-    },
-    enabled: isReadyToFetch,
+    queryKey: ["resaleMarketPrices", sku, selectedSize, country],
+    queryFn: () => getResaleMarketPrices(sku, selectedSize, country),
+    enabled: sku ? true : false,
   });
 
-  if (status === "pending") return <MarketplaceSkeleton />;
+  if (status === "pending") return <ResaleMarketLoader />;
   if (status === "error")
     return (
-      <div className="my-auto text-center font-semibold">{error.message}</div>
+      <>
+        <h3 className="mb-8 text-xl font-semibold text-foreground">
+          Resale Market Prices
+        </h3>
+        <div className="text-center font-semibold">{error.message}</div>
+      </>
     );
 
   return (
     <>
       <div className="mb-6 flex items-center justify-between">
         <h3 className="text-xl font-semibold text-foreground">
-          Marketplace Comparison
+          Resale Market Prices
         </h3>
         <Select value={selectedSize} onValueChange={setSelectedSize}>
           <SelectTrigger className="w-24">
@@ -66,7 +78,7 @@ export default function MarketplaceComparison({ sku, sizes, country }) {
           </thead>
           <tbody className="divide-y divide-border text-sm">
             {data.map((marketplaceInfo) => (
-              <MarketplaceItem
+              <ResaleMarketItem
                 key={marketplaceInfo.marketplace}
                 marketplaceInfo={marketplaceInfo}
               />

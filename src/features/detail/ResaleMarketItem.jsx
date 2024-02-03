@@ -1,7 +1,6 @@
-export default function MarketplaceComparisonItem({ marketplaceInfo }) {
+export default function ResaleMarketItem({ marketplaceInfo }) {
   const {
     marketplace,
-    size,
     lowestAsk,
     highestBid,
     fees,
