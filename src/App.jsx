@@ -9,15 +9,15 @@ const queryClient = new QueryClient();
 
 export default function App() {
   return (
-    <GlobalProvider>
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <GlobalProvider>
         <div className="grid grid-cols-[1fr,3fr,1fr] grid-rows-[5dvh,95dvh] bg-background text-foreground">
           <Navigation />
           <Release />
           <Detail />
           <LiveMonitor />
         </div>
-      </QueryClientProvider>
-    </GlobalProvider>
+      </GlobalProvider>
+    </QueryClientProvider>
   );
 }

@@ -1,16 +1,18 @@
 import { useGlobalState } from "@/context/globalContext";
 import { useQuery } from "@tanstack/react-query";
+import ProductReviewLoader from "./ProductReviewLoader";
+import { data as reviewData } from "../../../data/reviewData.js";
 
 async function getProductReview(query, country) {
-  const response = await fetch(
-    `http://localhost:8888/video?q=${query}&country=${country}`,
-  );
-  if (!response.ok) throw new Error("Something went wrong ☹");
+  // const response = await fetch(
+  //   `http://localhost:8888/review?q=${query}&country=${country}`,
+  // );
+  // if (!response.ok) throw new Error("Something went wrong ☹");
 
-  return await response.json();
+  // return await response.json();
+
+  return reviewData;
 }
-
-// Add loading state
 
 export default function ProductReview({ query }) {
   const { country } = useGlobalState();
@@ -19,7 +21,7 @@ export default function ProductReview({ query }) {
     queryFn: () => getProductReview(query, country),
   });
 
-  if (status === "pending") return <div>Loading...</div>;
+  if (status === "pending") return <ProductReviewLoader />;
   if (status === "error")
     return (
       <>
@@ -30,7 +32,7 @@ export default function ProductReview({ query }) {
 
   return (
     <>
-      <h3 className="mb-6 text-xl font-semibold">Product Reviews</h3>
+      <h3 className="mb-8 text-xl font-semibold">Product Reviews</h3>
       <div className="scrollbar-primary flex items-center gap-8 overflow-x-auto pb-6">
         {data.map((data) => (
           <iframe

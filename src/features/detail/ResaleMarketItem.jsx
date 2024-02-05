@@ -2,7 +2,7 @@ export default function ResaleMarketItem({ marketplaceInfo }) {
   const {
     marketplace,
     lowestAsk,
-    highestBid,
+    lastSale,
     fees,
     payout,
     iconUrl,
@@ -23,7 +23,7 @@ export default function ResaleMarketItem({ marketplaceInfo }) {
         </a>
       </td>
       <td className="px-6">{lowestAsk}</td>
-      <td className="px-6">{highestBid}</td>
+      <td className="px-6">{lastSale}</td>
       <td className="px-6">{fees}</td>
       <td className="px-6">{payout}</td>
     </tr>

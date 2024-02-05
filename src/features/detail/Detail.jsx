@@ -15,7 +15,7 @@ export default function Detail() {
       <div className="rounded-md border border-border p-8">
         <ResaleMarket sizes={sizes} />
       </div>
-      <div className="col-span-2 rounded-md border border-border p-8">
+      <div className="rounded-md border border-border p-8">
         <ProductReview query={query} />
       </div>
     </section>

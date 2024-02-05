@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useGlobalState } from "@/context/globalContext";
 import { useQuery } from "@tanstack/react-query";
 import ProductLoader from "@/components/ProductLoader";
@@ -8,7 +9,7 @@ function filterProducts(products) {
   return products.filter((product) => product.isPopular === true);
 }
 
-async function getReleaseProduct(country, timeZone, setProduct) {
+async function fetchReleaseProduct(country, timeZone) {
   const response = await fetch(
     `http://localhost:8888/release?country=${country}&timeZone=${timeZone}`,
   );
@@ -18,18 +19,20 @@ async function getReleaseProduct(country, timeZone, setProduct) {
   if (!data.length)
     throw new Error("There are no upcoming products currently.");
 
-  setProduct(data[0].channel, data[0].sku);
-
   return data;
 }
 
 export default function ReleaseProduct({ popularToggle }) {
-  const { country, timeZone, setProduct } = useGlobalState();
+  const { country, channel, sku, timeZone, setProduct } = useGlobalState();
   const { status, data, error } = useQuery({
-    queryKey: ["releaseProduct", country, timeZone],
-    queryFn: () => getReleaseProduct(country, timeZone, setProduct),
+    queryKey: ["releaseProduct", country],
+    queryFn: () => fetchReleaseProduct(country, timeZone),
     staleTime: Infinity,
   });
+
+  useEffect(() => {
+    if (data && !channel && !sku) setProduct(data[0].channel, data[0].sku);
+  }, [data, channel, sku, setProduct]);
 
   if (status === "pending") return <ProductLoader componentName={"release"} />;
   if (status === "error")
@@ -39,7 +42,7 @@ export default function ReleaseProduct({ popularToggle }) {
   if (popularToggle) products = groupBy(filterProducts(data), "releaseDate");
 
   return (
-    <div className="scrollbar-primary grow overflow-y-auto">
+    <div className="scrollbar-primary overflow-y-auto">
       {Object.keys(products).length ? (
         Object.entries(products).map(([date, productsInfo]) => (
           <ul key={date}>

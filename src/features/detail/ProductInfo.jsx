@@ -3,7 +3,7 @@ import { useGlobalState } from "@/context/globalContext";
 import { useQuery } from "@tanstack/react-query";
 import ProductInfoLoader from "./ProductInfoLoader";
 
-async function getProductInfo(channel, sku, country, timeZone) {
+async function fetchProductInfo(channel, sku, country, timeZone) {
   const response = await fetch(
     `http://localhost:8888/product?channel=${channel}&sku=${sku}&country=${country}&timeZone=${timeZone}`,
   );
@@ -15,29 +15,26 @@ async function getProductInfo(channel, sku, country, timeZone) {
 export default function ProductInfo({ setSizes, setQuery }) {
   const { country, channel, sku, timeZone } = useGlobalState();
   const { status, data, error } = useQuery({
-    queryKey: ["productInfo", channel, sku, country, timeZone],
-    queryFn: () => getProductInfo(channel, sku, country, timeZone),
+    queryKey: ["productInfo", channel, sku, country],
+    queryFn: () => fetchProductInfo(channel, sku, country, timeZone),
     enabled: channel && sku ? true : false,
   });
 
-  useEffect(
-    function () {
-      if (status !== "success") return;
+  useEffect(() => {
+    if (status !== "success") return;
 
-      setSizes(
-        data.sizesAndStockLevels.map(
-          (sizeAndStockLevel) => sizeAndStockLevel.size,
-        ),
-      );
+    setSizes(
+      data.sizesAndStockLevels.map(
+        (sizeAndStockLevel) => sizeAndStockLevel.size,
+      ),
+    );
 
-      setQuery(
-        channel === "SNKRS Web"
-          ? data.name
-          : data.name + data.colour.split("/")[0],
-      );
-    },
-    [channel, status, data, setSizes, setQuery],
-  );
+    setQuery(
+      channel === "SNKRS Web"
+        ? data.name
+        : data.name + data.colour.split("/")[0],
+    );
+  }, [channel, status, data, setSizes, setQuery]);
 
   if (status === "pending") return <ProductInfoLoader />;
   if (status === "error")

@@ -2,7 +2,7 @@ import { useGlobalState } from "@/context/globalContext";
 
 export default function ProductItem({ productInfo }) {
   const { setProduct } = useGlobalState();
-  const { channel, name, isPopular, brand, sku, price, releaseTime, imageUrl } =
+  const { channel, name, isPopular, sku, price, releaseTime, imageUrl } =
     productInfo;
 
   return (

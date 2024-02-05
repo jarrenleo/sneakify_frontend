@@ -3,7 +3,7 @@ const numOfRows = new Array(3).fill(null);
 export default function ResaleMarketLoader() {
   return (
     <>
-      <div className="mb-6 flex items-center justify-between">
+      <div className="mb-8 flex items-center justify-between">
         <h3 className="text-xl font-semibold text-foreground">
           Resale Market Prices
         </h3>
