@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useGlobalState } from "@/context/globalContext";
+import useGlobalState from "@/context/globalContext";
 import { useQuery } from "@tanstack/react-query";
 import {
   Select,

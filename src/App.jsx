@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Navigation from "./features/navigation/Navigation";
 import Release from "./features/release/Release";
 import Detail from "./features/detail/Detail";
-import LiveMonitor from "./features/monitor/LiveMonitor";
+import LiveMonitor from "./features/monitor/Monitor";
 
 const queryClient = new QueryClient();
 

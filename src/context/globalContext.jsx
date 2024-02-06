@@ -2,8 +2,13 @@ import { createContext, useContext, useReducer } from "react";
 
 const GlobalContext = createContext();
 
+function getLocalStorage(key, defaultValue) {
+  const storedValue = localStorage.getItem(key);
+  return storedValue ? JSON.parse(storedValue) : defaultValue;
+}
+
 const initialState = {
-  country: "SG",
+  country: getLocalStorage("country", "SG"),
   channel: undefined,
   sku: undefined,
   timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
@@ -56,6 +61,6 @@ export function GlobalProvider({ children }) {
   );
 }
 
-export function useGlobalState() {
+export default function useGlobalState() {
   return useContext(GlobalContext);
 }

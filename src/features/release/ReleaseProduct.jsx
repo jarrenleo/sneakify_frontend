@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { useGlobalState } from "@/context/globalContext";
+import useGlobalState from "@/context/globalContext";
 import { useQuery } from "@tanstack/react-query";
-import ProductLoader from "@/components/ProductLoader";
+import ReleaseLoader from "./ReleaseLoader";
 import ProductItem from "@/components/ProductItem";
 import groupBy from "lodash.groupby";
 
@@ -34,7 +34,7 @@ export default function ReleaseProduct({ popularToggle }) {
     if (data && !channel && !sku) setProduct(data[0].channel, data[0].sku);
   }, [data, channel, sku, setProduct]);
 
-  if (status === "pending") return <ProductLoader componentName={"release"} />;
+  if (status === "pending") return <ReleaseLoader />;
   if (status === "error")
     return <div className="text-center font-semibold">{error.message}</div>;
 

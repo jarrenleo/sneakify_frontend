@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useGlobalState } from "@/context/globalContext";
+import useGlobalState from "@/context/globalContext";
 import Logo from "./Logo";
 import {
   Select,
@@ -27,6 +27,7 @@ export default function Navigation() {
 
   useEffect(() => {
     if (selectedCountry !== country) {
+      localStorage.setItem("country", JSON.stringify(selectedCountry));
       setCountry(selectedCountry);
       setProduct(undefined, undefined);
     }

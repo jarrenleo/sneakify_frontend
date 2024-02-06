@@ -1,8 +1,8 @@
-import { useGlobalState } from "@/context/globalContext";
+import useGlobalState from "@/context/globalContext";
 
 export default function ProductItem({ productInfo }) {
   const { setProduct } = useGlobalState();
-  const { channel, name, isPopular, sku, price, releaseTime, imageUrl } =
+  const { channel, name, sku, price, releaseTime, lastFetchTime, imageUrl } =
     productInfo;
 
   return (
@@ -15,7 +15,7 @@ export default function ProductItem({ productInfo }) {
         <h3 className="line-clamp-1 text-sm font-semibold">{name}</h3>
         <span className="text-sm">{price}</span>
         <span className="text-xs text-muted-foreground">
-          {releaseTime} &#10072; {sku}
+          {releaseTime || lastFetchTime} &#10072; {sku}
         </span>
       </div>
     </li>
