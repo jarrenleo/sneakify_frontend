@@ -5,7 +5,7 @@ import { data as reviewData } from "../../../data/reviewData.js";
 
 async function getProductReview(query, country) {
   // const response = await fetch(
-  //   `http://localhost:8888/review?q=${query}&country=${country}`,
+  //   `https://api.sneakify.org/review?q=${query}&country=${country}`,
   // );
   // if (!response.ok) throw new Error("Something went wrong ☹");
 

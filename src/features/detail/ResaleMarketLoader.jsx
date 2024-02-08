@@ -7,7 +7,7 @@ export default function ResaleMarketLoader() {
         <h3 className="text-xl font-semibold text-foreground">
           Resale Market Prices
         </h3>
-        <div className="h-8 w-20 animate-pulse rounded-md bg-muted"></div>
+        <div className="h-8 w-28 animate-pulse rounded-md bg-muted"></div>
       </div>
       <div className="rounded-md border border-border">
         <table className="w-full divide-y divide-border">

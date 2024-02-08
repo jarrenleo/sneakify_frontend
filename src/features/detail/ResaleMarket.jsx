@@ -54,7 +54,7 @@ export default function ResaleMarket({ sizes }) {
           Resale Market Prices
         </h3>
         <Select value={selectedSize} onValueChange={setSelectedSize}>
-          <SelectTrigger className="w-24">
+          <SelectTrigger className="w-28">
             <SelectValue placeholder={`US ${sizes[0]}`} />
           </SelectTrigger>
           <SelectContent>

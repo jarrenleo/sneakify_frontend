@@ -25,7 +25,7 @@ function reducer(state, action) {
   }
 }
 
-export function GlobalProvider({ children }) {
+export function GlobalContextProvider({ children }) {
   const [{ country, channel, sku, timeZone }, dispatch] = useReducer(
     reducer,
     initialState,

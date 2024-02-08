@@ -17,10 +17,7 @@ async function fetchMonitorProduct(country, timeZone) {
 const MonitorRef = forwardRef(function MonitorRef({ productInfo }, ref) {
   return (
     <div ref={ref}>
-      <ProductItem
-        key={productInfo.sku + productInfo.dateTimeObject}
-        productInfo={productInfo}
-      />
+      <ProductItem key={productInfo.uuid} productInfo={productInfo} />
     </div>
   );
 });
@@ -33,7 +30,7 @@ export default function MonitorProduct() {
   const { status, data, error } = useQuery({
     queryKey: ["monitorProduct", country],
     queryFn: () => fetchMonitorProduct(country, timeZone),
-    refetchInterval: 5000,
+    refetchInterval: 6000,
     staleTime: Infinity,
   });
 
@@ -76,12 +73,14 @@ export default function MonitorProduct() {
 
   return (
     <div className="scrollbar-primary overflow-y-auto">
-      <FlipMove>
+      <FlipMove
+        duration={700}
+        appearAnimation="none"
+        enterAnimation="fade"
+        leaveAnimation="none"
+      >
         {products.map((productInfo) => (
-          <MonitorRef
-            key={productInfo.sku + productInfo.dateTimeObject}
-            productInfo={productInfo}
-          />
+          <MonitorRef key={productInfo.uuid} productInfo={productInfo} />
         ))}
       </FlipMove>
     </div>
