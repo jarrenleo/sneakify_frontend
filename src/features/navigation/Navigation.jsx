@@ -8,7 +8,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/ui/Select";
-import SearchBar from "./SearchBar";
 
 const countries = {
   Singapore: "SG",
@@ -34,9 +33,8 @@ export default function Navigation() {
   }, [selectedCountry, country, setCountry, setProduct]);
 
   return (
-    <nav className="col-span-3 grid grid-cols-3 grid-rows-1 border-b border-border px-6">
+    <nav className="col-span-3 flex items-center justify-between border-b border-border px-6">
       <Logo />
-      <SearchBar />
       <div className="flex items-center justify-end">
         <Select value={selectedCountry} onValueChange={setSelectedCountry}>
           <SelectTrigger className="w-40">
