@@ -1,17 +1,14 @@
 import useGlobalState from "@/context/globalContext";
 import { useQuery } from "@tanstack/react-query";
 import ProductReviewLoader from "./ProductReviewLoader";
-import { data as reviewData } from "../../../data/reviewData.js";
 
 async function getProductReview(query, country) {
-  // const response = await fetch(
-  //   `https://api.sneakify.org/review?q=${query}&country=${country}`,
-  // );
-  // if (!response.ok) throw new Error("Something went wrong ☹");
+  const response = await fetch(
+    `https://api.sneakify.org/review?q=${query}&country=${country}`,
+  );
+  if (!response.ok) throw new Error("Something went wrong ☹");
 
-  // return await response.json();
-
-  return reviewData;
+  return await response.json();
 }
 
 export default function ProductReview({ query }) {

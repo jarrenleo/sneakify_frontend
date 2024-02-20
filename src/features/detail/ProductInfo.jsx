@@ -5,7 +5,7 @@ import ProductInfoLoader from "./ProductInfoLoader";
 
 async function fetchProductInfo(channel, sku, country, timeZone) {
   const response = await fetch(
-    `http://localhost:8888/product?channel=${channel}&sku=${sku}&country=${country}&timeZone=${timeZone}`,
+    `https://api.sneakify.org/product?channel=${channel}&sku=${sku}&country=${country}&timeZone=${timeZone}`,
   );
   if (!response.ok) throw new Error("Something went wrong ☹");
 

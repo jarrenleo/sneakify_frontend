@@ -13,7 +13,7 @@ import ResaleMarketItem from "./ResaleMarketItem";
 
 async function fetchResaleMarketPrices(sku, selectedSize, country) {
   const response = await fetch(
-    `http://localhost:8888/resale?sku=${sku}&size=${selectedSize}&country=${country}`,
+    `https://api.sneakify.org/resale?sku=${sku}&size=${selectedSize}&country=${country}`,
   );
   if (!response.ok) throw new Error("Something went wrong ☹");
 

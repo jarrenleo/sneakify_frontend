@@ -7,7 +7,7 @@ import FlipMove from "react-flip-move";
 
 async function fetchMonitorProduct(country, timeZone) {
   const response = await fetch(
-    `http://localhost:8888/monitor?country=${country}&timeZone=${timeZone}`,
+    `https://api.sneakify.org/monitor?country=${country}&timeZone=${timeZone}`,
   );
   if (!response.ok) throw new Error("Something went wrong ☹");
 
