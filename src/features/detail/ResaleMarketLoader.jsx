@@ -1,4 +1,4 @@
-const numOfRows = new Array(3).fill(null);
+const numOfRows = new Array(2).fill(null);
 
 export default function ResaleMarketLoader() {
   return (
