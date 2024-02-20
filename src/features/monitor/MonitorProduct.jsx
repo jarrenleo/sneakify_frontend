@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, forwardRef } from "react";
 import ProductItem from "@/components/ProductItem";
-import useGlobalState from "@/context/globalContext";
+import useGlobalState from "@/context/GlobalContext";
 import { useQuery } from "@tanstack/react-query";
 import MonitorLoader from "./MonitorLoader";
 import FlipMove from "react-flip-move";

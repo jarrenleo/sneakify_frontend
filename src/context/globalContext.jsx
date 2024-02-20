@@ -2,13 +2,17 @@ import { createContext, useContext, useReducer } from "react";
 
 const GlobalContext = createContext();
 
+function getSystemPreference() {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches;
+}
+
 function getLocalStorage(key, defaultValue) {
   const storedValue = localStorage.getItem(key);
   return storedValue ? JSON.parse(storedValue) : defaultValue;
 }
 
-function getSystemPreference() {
-  return window.matchMedia("(prefers-color-scheme: dark)").matches;
+function setLocalStorage(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
 }
 
 const initialState = {
@@ -40,7 +44,7 @@ export function GlobalContextProvider({ children }) {
 
   function setCountry(country) {
     dispatch({ type: "setCountry", payload: country });
-    localStorage.setItem("country", JSON.stringify(country));
+    setLocalStorage("country", country);
   }
 
   function setProduct(channel, sku) {
@@ -58,7 +62,7 @@ export function GlobalContextProvider({ children }) {
       type: "setTheme",
       payload: darkMode,
     });
-    localStorage.setItem("darkMode", JSON.stringify(darkMode));
+    setLocalStorage("darkMode", darkMode);
   }
 
   return (

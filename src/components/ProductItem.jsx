@@ -1,4 +1,4 @@
-import useGlobalState from "@/context/globalContext";
+import useGlobalState from "@/context/GlobalContext";
 
 export default function ProductItem({ productInfo }) {
   const { setProduct } = useGlobalState();

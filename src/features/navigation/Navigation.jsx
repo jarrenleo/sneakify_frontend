@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useGlobalState from "@/context/globalContext";
+import useGlobalState from "@/context/GlobalContext";
 import Logo from "./Logo";
 import Switch from "@/ui/Switch";
 import {
@@ -38,6 +38,12 @@ export default function Navigation() {
   useEffect(() => {
     if (themeSwitch !== darkMode) setTheme(themeSwitch);
   }, [themeSwitch, darkMode, setTheme]);
+
+  useEffect(() => {
+    darkMode
+      ? document.documentElement.classList.add("dark")
+      : document.documentElement.classList.remove("dark");
+  }, [darkMode]);
 
   return (
     <nav className="col-span-3 flex items-center justify-between border-b border-border px-6">
