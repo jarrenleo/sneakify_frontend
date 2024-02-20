@@ -41,7 +41,7 @@ export default function ProductReview({ query }) {
             height="255"
             src={`https://www.youtube.com/embed/${data.videoId}`}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
         ))}
       </div>

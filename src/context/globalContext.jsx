@@ -7,11 +7,16 @@ function getLocalStorage(key, defaultValue) {
   return storedValue ? JSON.parse(storedValue) : defaultValue;
 }
 
+function getSystemPreference() {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches;
+}
+
 const initialState = {
   country: getLocalStorage("country", "SG"),
   channel: undefined,
   sku: undefined,
   timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+  darkMode: getLocalStorage("darkMode", getSystemPreference()),
 };
 
 function reducer(state, action) {
@@ -20,19 +25,22 @@ function reducer(state, action) {
       return { ...state, country: action.payload };
     case "setProduct":
       return { ...state, ...action.payload };
+    case "setTheme":
+      return { ...state, darkMode: action.payload };
     default:
       throw new Error("Invalid action type");
   }
 }
 
 export function GlobalContextProvider({ children }) {
-  const [{ country, channel, sku, timeZone }, dispatch] = useReducer(
+  const [{ country, channel, sku, timeZone, darkMode }, dispatch] = useReducer(
     reducer,
     initialState,
   );
 
   function setCountry(country) {
     dispatch({ type: "setCountry", payload: country });
+    localStorage.setItem("country", JSON.stringify(country));
   }
 
   function setProduct(channel, sku) {
@@ -45,6 +53,14 @@ export function GlobalContextProvider({ children }) {
     });
   }
 
+  function setTheme(darkMode) {
+    dispatch({
+      type: "setTheme",
+      payload: darkMode,
+    });
+    localStorage.setItem("darkMode", JSON.stringify(darkMode));
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -52,8 +68,10 @@ export function GlobalContextProvider({ children }) {
         channel,
         sku,
         timeZone,
+        darkMode,
         setCountry,
         setProduct,
+        setTheme,
       }}
     >
       {children}

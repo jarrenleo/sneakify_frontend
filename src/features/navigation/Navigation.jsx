@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useGlobalState from "@/context/globalContext";
 import Logo from "./Logo";
+import Switch from "@/ui/Switch";
 import {
   Select,
   SelectContent,
@@ -8,6 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/ui/Select";
+import { Sun, Moon } from "lucide-react";
 
 const countries = {
   Singapore: "SG",
@@ -21,21 +23,30 @@ const countries = {
 };
 
 export default function Navigation() {
-  const { country, setCountry, setProduct } = useGlobalState();
+  const { country, darkMode, setCountry, setProduct, setTheme } =
+    useGlobalState();
+  const [themeSwitch, setThemeSwitch] = useState(darkMode);
   const [selectedCountry, setSelectedCountry] = useState(country);
 
   useEffect(() => {
     if (selectedCountry !== country) {
-      localStorage.setItem("country", JSON.stringify(selectedCountry));
       setCountry(selectedCountry);
       setProduct(undefined, undefined);
     }
   }, [selectedCountry, country, setCountry, setProduct]);
 
+  useEffect(() => {
+    if (themeSwitch !== darkMode) setTheme(themeSwitch);
+  }, [themeSwitch, darkMode, setTheme]);
+
   return (
     <nav className="col-span-3 flex items-center justify-between border-b border-border px-6">
       <Logo />
-      <div className="flex items-center justify-end">
+      <div className="flex items-center justify-end gap-4">
+        <div className="flex items-center gap-2">
+          {!themeSwitch ? <Sun size="16" /> : <Moon size="16" />}
+          <Switch checked={themeSwitch} onCheckedChange={setThemeSwitch} />
+        </div>
         <Select value={selectedCountry} onValueChange={setSelectedCountry}>
           <SelectTrigger className="w-40">
             <SelectValue placeholder={selectedCountry} />
