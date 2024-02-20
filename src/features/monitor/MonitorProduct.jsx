@@ -16,9 +16,9 @@ async function fetchMonitorProduct(country, timeZone) {
 
 const MonitorRef = forwardRef(function MonitorRef({ productInfo }, ref) {
   return (
-    <div ref={ref}>
+    <ul ref={ref}>
       <ProductItem key={productInfo.uuid} productInfo={productInfo} />
-    </div>
+    </ul>
   );
 });
 

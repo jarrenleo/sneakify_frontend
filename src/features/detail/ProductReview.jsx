@@ -16,6 +16,7 @@ export default function ProductReview({ query }) {
   const { status, data, error } = useQuery({
     queryKey: ["productReview", query, country],
     queryFn: () => getProductReview(query, country),
+    enabled: query && country ? true : false,
   });
 
   if (status === "pending") return <ProductReviewLoader />;
@@ -31,9 +32,10 @@ export default function ProductReview({ query }) {
     <>
       <h3 className="mb-8 text-xl font-semibold">Product Reviews</h3>
       <div className="scrollbar-primary flex items-center gap-8 overflow-x-auto pb-6">
-        {data.map((data) => (
+        {data.map((data, i) => (
           <iframe
             key={data.videoId}
+            title={`${query} product review video ${i}`}
             width="300"
             height="255"
             src={`https://www.youtube.com/embed/${data.videoId}`}

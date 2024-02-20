@@ -46,7 +46,7 @@ export default function ReleaseProduct({ popularToggle }) {
       {Object.keys(products).length ? (
         Object.entries(products).map(([date, productsInfo]) => (
           <ul key={date}>
-            <h2 className="px-6 pt-2 font-semibold">{date}</h2>
+            <li className="px-6 pt-2 font-semibold">{date}</li>
             {productsInfo.map((productInfo) => (
               <ProductItem key={productInfo.uuid} productInfo={productInfo} />
             ))}

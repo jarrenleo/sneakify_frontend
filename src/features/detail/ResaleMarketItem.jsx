@@ -18,7 +18,7 @@ export default function ResaleMarketItem({ marketplaceInfo }) {
           rel="noreferrer"
           className="flex items-center gap-2 hover:underline"
         >
-          <img src={iconUrl} className="h-6 w-6" />
+          <img src={iconUrl} alt={`${marketplace} Icon`} className="h-6 w-6" />
           <span>{marketplace}</span>
         </a>
       </td>
