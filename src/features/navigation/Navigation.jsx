@@ -48,11 +48,13 @@ export default function Navigation() {
   return (
     <nav className="col-span-3 flex items-center justify-between border-b border-border px-6">
       <Logo />
-      <div className="flex items-center justify-end gap-4">
-        <div className="flex items-center gap-2">
-          {!themeSwitch ? <Sun size="16" /> : <Moon size="16" />}
-          <Switch checked={themeSwitch} onCheckedChange={setThemeSwitch} />
-        </div>
+      <div className="flex items-center gap-2">
+        {!themeSwitch ? <Sun size="16" /> : <Moon size="16" />}
+        <Switch
+          checked={themeSwitch}
+          onCheckedChange={setThemeSwitch}
+          className="mr-2"
+        />
         <Select value={selectedCountry} onValueChange={setSelectedCountry}>
           <SelectTrigger className="w-40">
             <SelectValue placeholder={selectedCountry} />
