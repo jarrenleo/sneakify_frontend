@@ -57,12 +57,12 @@ export function GlobalContextProvider({ children }) {
     });
   }
 
-  function setTheme(darkMode) {
+  function setTheme(selectedMode) {
     dispatch({
       type: "setTheme",
-      payload: darkMode,
+      payload: selectedMode,
     });
-    setLocalStorage("darkMode", darkMode);
+    setLocalStorage("darkMode", selectedMode);
   }
 
   return (

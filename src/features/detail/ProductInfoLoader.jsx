@@ -28,7 +28,7 @@ export default function ProductInfoLoader() {
             </tr>
           </thead>
           <tbody>
-            {numOfRows.map((row, i) => (
+            {numOfRows.map((_, i) => (
               <tr key={i}>
                 <td>
                   <div className="h-5 w-12 rounded-full bg-muted"></div>

@@ -20,8 +20,7 @@ async function fetchResaleMarketPrices(sku, selectedSize, country) {
   return await response.json();
 }
 
-// Issues:
-// No exception handling for products with no available sizes
+// Might want to looking into handling products with no available sizes
 
 export default function ResaleMarket({ sizes }) {
   const { country, sku } = useGlobalState();
@@ -30,6 +29,7 @@ export default function ResaleMarket({ sizes }) {
     queryKey: ["resaleMarket", sku, selectedSize, country],
     queryFn: () => fetchResaleMarketPrices(sku, selectedSize, country),
     enabled: sku && selectedSize ? true : false,
+    staleTime: Infinity,
   });
 
   useEffect(() => {
