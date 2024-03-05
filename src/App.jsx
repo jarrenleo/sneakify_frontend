@@ -7,6 +7,12 @@ import Monitor from "./features/monitor/Monitor";
 
 const queryClient = new QueryClient();
 
+/**
+ * This component renders the entire React application with the following core components: Navigation, Release, Detail, and Monitor.
+ * It uses the QueryClientProvider to enable the use of React Query throughout the app for data fetching, caching, and synchronization.
+ * A global context is provided for maintaining global application state.
+ * @returns {ReactNode} A React element that renders the entire application.
+ */
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
