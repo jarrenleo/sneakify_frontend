@@ -11,6 +11,13 @@ import {
 import ResaleMarketLoader from "./ResaleMarketLoader";
 import ResaleMarketItem from "./ResaleMarketItem";
 
+/**
+ * Fetches product information data from our API endpoint.
+ * @param {string} query - The product name query.
+ * @param {string} country - The sekected country.
+ * @returns {Promise<Object[]>} A promise that resolves to an array of relevant youtube video ids.
+ * @throws {Error} Throws an error if the data fetching process fails.
+ */
 async function fetchResaleMarketPrices(sku, selectedSize, country) {
   const response = await fetch(
     `https://api.sneakify.org/resale?sku=${sku}&size=${selectedSize}&country=${country}`,
@@ -20,11 +27,19 @@ async function fetchResaleMarketPrices(sku, selectedSize, country) {
   return await response.json();
 }
 
-// Might want to looking into handling products with no available sizes
-
+/**
+ * This component fetches and renders a table of secondary market prices from multiple resale platforms.
+ * This component also handles loading states and errors, displaying appropriate messages.
+ * @param {string[]} sizes - An array of sizes available for users to select to look at prices for each size.
+ * @returns {ReactNode} A React element that renders a table of secondary market prices from multiple resale platforms.
+ */
 export default function ResaleMarket({ sizes }) {
+  // Access global state from global context provider
   const { country, sku } = useGlobalState();
+  // State to store which is the currently selected size
   const [selectedSize, setSelectedSize] = useState(undefined);
+  // Fetch resale data using React query based on sku, selectedSize and country.
+  // Only start fetching when sku and selectedSize are available.
   const { status, data, error } = useQuery({
     queryKey: ["resaleMarket", sku, selectedSize, country],
     queryFn: () => fetchResaleMarketPrices(sku, selectedSize, country),
@@ -32,11 +47,14 @@ export default function ResaleMarket({ sizes }) {
     staleTime: Infinity,
   });
 
+  // When the size array changes, a new product item has been selected and therefore, select the first available size by default
   useEffect(() => {
     if (sizes.length) setSelectedSize(sizes[0]);
   }, [sizes]);
 
+  // If pending status, render skeleton loader
   if (status === "pending") return <ResaleMarketLoader />;
+  // If error status, render error message
   if (status === "error")
     return (
       <>
@@ -47,6 +65,7 @@ export default function ResaleMarket({ sizes }) {
       </>
     );
 
+  // If success status, render a table of secondary market prices from multiple resale platforms
   return (
     <>
       <div className="mb-8 flex items-center justify-between">

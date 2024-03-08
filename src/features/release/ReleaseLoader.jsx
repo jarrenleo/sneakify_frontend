@@ -3,6 +3,10 @@ import ProductItemLoader from "@/components/ProductItemLoader";
 const numOfProductGroups = new Array(3).fill(null);
 const numOfProducts = new Array(4).fill(null);
 
+/**
+ * This component renders a skeleton placeholder when release data is being fetched.
+ * @returns {ReactNode} A React element renders a skeleton placeholder when release data is being fetched.
+ */
 export default function ReleaseLoader() {
   return (
     <div className="scrollbar-primary animate-pulse overflow-y-auto">

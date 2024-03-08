@@ -1,3 +1,8 @@
+/**
+ * This component renders a table row display price information for a resale platform.
+ * @param {object} marketplaceInfo - An object containing all the price information
+ * @returns {ReactNode} - A react element that renders a table row display price information for a resale platform.
+ */
 export default function ResaleMarketItem({ marketplaceInfo }) {
   const {
     marketplace,

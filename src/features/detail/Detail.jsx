@@ -3,6 +3,11 @@ import ProductInfo from "./ProductInfo";
 import ResaleMarket from "./ResaleMarket";
 import ProductReview from "./ProductReview";
 
+/**
+ * This component renders the main section of the application.
+ * It displays product information, resale market, and product reviews.
+ * @returns {ReactNode} A react element that renders the detail component.
+ */
 export default function Detail() {
   const [sizes, setSizes] = useState([]);
   const [query, setQuery] = useState("");

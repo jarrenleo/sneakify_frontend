@@ -1,6 +1,11 @@
 import MonitorProduct from "./MonitorProduct";
 import Status from "./Status";
 
+/**
+ * This component renders the monitor section.
+ * It displays the latest sneaker restocks and includes a live status indicator.
+ * @returns {ReactNode} A react element that renders the monitor section comprised of a heading, live status indicator and a list of monitor products.
+ */
 export default function Monitor() {
   return (
     <section className="flex flex-col border-l border-border">

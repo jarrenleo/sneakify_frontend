@@ -1,3 +1,7 @@
+/**
+ * This component renders a skeleton placeholder for a product item in the release/monitor component.
+ * @returns {ReactNode} A React element renders a skeleton placeholder for a product item in the release/monitor component.
+ */
 export default function ProductItemLoader() {
   return (
     <div className="flex items-center gap-4 px-6 py-4">

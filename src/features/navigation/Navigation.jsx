@@ -22,6 +22,17 @@ const countries = {
   "United States": "US",
 };
 
+/**
+ * This component renders the navigation bar.
+ * It contains a logo component, a theme toggle switch that switches between light and dark modes, and a select dropdown menu to choose a country from a predefined list.
+ *
+ * This component interacts with a global state to manage and apply user preferences across the application.
+ * Changes to theme and country selection are stored and reflected in global context, ensuring a consistent experience throughout the user's session.
+ *
+ * useEffect hooks are used to perform side effects tied to the theme mode and country selection state changes. Updates to these states are propagated to corresponding context setters to maintain application-wide state consistency.
+ *
+ * @returns {ReactNode} A react element that renders the navigation bar comprising a Logo, a theme Switch, and a country selection menu.
+ */
 export default function Navigation() {
   const { country, darkMode, setCountry, setProduct, setTheme } =
     useGlobalState();

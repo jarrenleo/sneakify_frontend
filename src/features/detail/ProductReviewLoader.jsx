@@ -1,5 +1,9 @@
 const numOfEmbeds = new Array(3).fill(null);
 
+/**
+ * This component renders a skeleton placeholder when product review data is being fetched.
+ * @returns {ReactNode} A React element renders a skeleton placeholder when product review data is being fetched.
+ */
 export default function ProductReviewLoader() {
   return (
     <>

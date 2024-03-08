@@ -1,5 +1,9 @@
 const numOfRows = new Array(2).fill(null);
 
+/**
+ * This component renders a skeleton placeholder when resale market price data is being fetched.
+ * @returns {ReactNode} A React element renders a skeleton placeholder when when resale market price data is being fetched.
+ */
 export default function ResaleMarketLoader() {
   return (
     <>

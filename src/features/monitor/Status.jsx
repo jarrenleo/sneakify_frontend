@@ -1,3 +1,7 @@
+/**
+ * This components renders a status component with a pulsating indicator and a "Live" text.
+ * @returns {ReactNode} A react element that renders the live status indicator.
+ */
 export default function Status() {
   return (
     <div className="flex items-center gap-1">

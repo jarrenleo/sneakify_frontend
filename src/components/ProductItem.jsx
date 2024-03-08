@@ -1,5 +1,11 @@
 import useGlobalState from "@/context/GlobalContext";
 
+/**
+ * This component renders a single product item in a list.
+ * This component has an onClick handler that changes the current product to display.
+ * @param {Object} productInfo - The product information.
+ * @returns {ReactNode} A react element that renders a single product item in a list.
+ */
 export default function ProductItem({ productInfo }) {
   const { setProduct } = useGlobalState();
   const { channel, name, sku, price, releaseTime, lastFetchTime, imageUrl } =
