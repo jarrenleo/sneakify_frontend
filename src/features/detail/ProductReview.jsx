@@ -1,4 +1,4 @@
-import useGlobalState from "@/context/GlobalContext";
+import useGlobalState from "@/context/Context";
 import { useQuery } from "@tanstack/react-query";
 import ProductReviewLoader from "./ProductReviewLoader";
 
