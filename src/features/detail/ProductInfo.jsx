@@ -5,6 +5,8 @@ import ProductInfoLoader from "./ProductInfoLoader";
 
 /**
  * Fetches product information data from our API endpoint.
+ * @async
+ * @function fetchProductInfo
  * @param {string} channel - The selected channel.
  * @param {string} sku - The selected stock keeping unit.
  * @param {string} country - The selected country.

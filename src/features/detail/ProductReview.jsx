@@ -4,6 +4,8 @@ import ProductReviewLoader from "./ProductReviewLoader";
 
 /**
  * Fetches product information data from our API endpoint.
+ * @async
+ * @function getProductReview
  * @param {string} query - The product name query.
  * @param {string} country - The selected country.
  * @returns {Promise<Object[]>} A promise that resolves to an array of relevant youtube video ids.

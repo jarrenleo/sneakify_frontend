@@ -7,6 +7,7 @@ import groupBy from "lodash.groupby";
 
 /**
  * Filters the product list to only include popular products.
+ * @function filterProducts
  * @param {Object[]} products - An array of products to filter.
  * @returns {Object[]} An array of products where each product has isPopular equal to true.
  */
@@ -16,6 +17,8 @@ function filterProducts(products) {
 
 /**
  * Fetches upcoming release data from our API endpoint.
+ * @async
+ * @function fetchReleaseProduct
  * @param {string} country - The selected country.
  * @param {string} timeZone - The current timeZone.
  * @returns {Promise<Object[]>} A promise that resolves to an array of upcoming products.

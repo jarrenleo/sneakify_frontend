@@ -13,6 +13,8 @@ import ResaleMarketItem from "./ResaleMarketItem";
 
 /**
  * Fetches product information data from our API endpoint.
+ * @async
+ * @function fetchResaleMarketPrices
  * @param {string} query - The product name query.
  * @param {string} country - The sekected country.
  * @returns {Promise<Object[]>} A promise that resolves to an array of relevant youtube video ids.

@@ -7,6 +7,8 @@ import FlipMove from "react-flip-move";
 
 /**
  * Fetches monitor product data from our API endpoint.
+ * @async
+ * @function fetchMonitorProduct
  * @param {string} country - The selected country.
  * @param {string} timeZone - The current timeZone.
  * @returns {Promise<Object[]>} A promise that resolves to an array of monitor products.
