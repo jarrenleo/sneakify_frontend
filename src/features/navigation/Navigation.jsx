@@ -11,6 +11,17 @@ import {
 } from "@/ui/Select";
 import { Sun, Moon } from "lucide-react";
 
+/**
+ * Pre-defined option to value object for the select country dropdown menu component.
+ * @property {string} Singapore - The option to select Singapore.
+ * @property {string} Malaysia - The option to select Malaysia.
+ * @property {string} Japan - The option to select Japan.
+ * @property {string} United Kingdom - The option to select United Kingdom.
+ * @property {string} Netherlands - The option to select Netherlands.
+ * @property {string} Australia - The option to select Australia.
+ * @property {string} Canada - The option to select Canada.
+ * @property {string} United States - The option to select United States.
+ */
 const countries = {
   Singapore: "SG",
   Malaysia: "MY",
@@ -23,22 +34,19 @@ const countries = {
 };
 
 /**
- * This component renders the navigation bar.
- * It contains a logo component, a theme toggle switch that switches between light and dark modes, and a select dropdown menu to choose a country from a predefined list.
- *
- * This component interacts with a global state to manage and apply user preferences across the application.
- * Changes to theme and country selection are stored and reflected in global context, ensuring a consistent experience throughout the user's session.
- *
- * useEffect hooks are used to perform side effects tied to the theme mode and country selection state changes. Updates to these states are propagated to corresponding context setters to maintain application-wide state consistency.
- *
- * @returns {ReactNode} A react element that renders the navigation bar comprising a Logo, a theme Switch, and a country selection menu.
+ * This component renders the navigation bar containing a logo, a theme toggle switch, and a select country dropdown menu.
+ * @returns {ReactNode} A react element that renders the navigation bar containing a logo, a theme toggle switch, and a select country dropdown menu.
  */
 export default function Navigation() {
+  // Access global state from global context provider
   const { country, darkMode, setCountry, setProduct, setTheme } =
     useGlobalState();
+  // State to store the current theme preference
   const [themeSwitch, setThemeSwitch] = useState(darkMode);
+  // State to store the current selected country
   const [selectedCountry, setSelectedCountry] = useState(country);
 
+  // When the user selects another country, change the global state by setting the country property to the selected country and resetting the product property
   useEffect(() => {
     if (selectedCountry !== country) {
       setCountry(selectedCountry);
@@ -46,10 +54,12 @@ export default function Navigation() {
     }
   }, [selectedCountry, country, setCountry, setProduct]);
 
+  // When the user toggles the darkMode switch, change the global state by setting the darkMode property to the preference of the user
   useEffect(() => {
     if (themeSwitch !== darkMode) setTheme(themeSwitch);
   }, [themeSwitch, darkMode, setTheme]);
 
+  // When the user toggles the darkMode switch, also add/remove the dark class onto the html document
   useEffect(() => {
     darkMode
       ? document.documentElement.classList.add("dark")
