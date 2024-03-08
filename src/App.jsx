@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { GlobalContextProvider } from "./context/Context";
+import { GlobalContextProvider } from "./context/GlobalContext";
 import Navigation from "./features/navigation/Navigation";
 import Release from "./features/release/Release";
 import Detail from "./features/detail/Detail";

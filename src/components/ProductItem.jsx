@@ -1,4 +1,4 @@
-import useGlobalState from "@/context/Context";
+import useGlobalState from "@/context/GlobalContext";
 
 /**
  * This component renders a single product item in a list.

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useGlobalState from "@/context/Context";
+import useGlobalState from "@/context/GlobalContext";
 import Logo from "./Logo";
 import Switch from "@/ui/Switch";
 import {
