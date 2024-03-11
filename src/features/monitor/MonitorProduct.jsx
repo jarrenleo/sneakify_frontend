@@ -58,7 +58,7 @@ export default function MonitorProduct() {
     staleTime: Infinity,
   });
 
-  // When the country changes, teset the list of monitor products and previous data reference
+  // When the country changes, reset the list of monitor products and previous data reference
   useEffect(() => {
     setProducts([]);
     previousDataRef.current = undefined;
